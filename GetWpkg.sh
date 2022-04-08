@@ -34,6 +34,8 @@ if [ "$is_device_connected" != "" ];then
             newPkgs=$(adb shell "su -c 'find /data/data/com.tencent.mm/MicroMsg/*/appbrand/pkg/ -name *.wxapkg'")
             if [ "$newPkgs" != "" ];then
                 echo "【❕】发现新增${#newPkgs[*]}个wxapkg文件"
+                echo "【❕】耐心等待10s..."
+                sleep 10 # 小程序下载
                 for var in ${newPkgs[*]}
                 do
                     echo $var
